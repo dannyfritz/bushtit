@@ -1,0 +1,36 @@
+{
+  "name": "bushtit",
+  "version": "1.0.0",
+  "description": "A minigame engine",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./src/runtime/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dannyfritz/bushtit.git"
+  },
+  "keywords": [
+    "minigame",
+    "game",
+    "engine"
+  ],
+  "author": "Danny Fritz <dannyfritz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dannyfritz/bushtit/issues"
+  },
+  "homepage": "https://github.com/dannyfritz/bushtit#readme",
+  "dependencies": {
+    "@types/gl-matrix": "^2.4.5",
+    "@types/lodash": "^4.14.134",
+    "gl-matrix": "^3.0.0",
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3",
+    "pixi.js": "^5.0.4",
+    "typescript": "^3.5.2"
+  }
+}

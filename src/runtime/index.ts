@@ -20,18 +20,25 @@ document.addEventListener('keydown', function (e) {
     switch (e.code) {
         case "ArrowUp":
             input.up = true;
+            break;
         case "ArrowDown":
             input.down = true;
+            break;
         case "ArrowLeft":
             input.left = true;
+            break;
         case "ArrowRight":
             input.right = true;
+            break;
         case "KeyZ":
             input.aButton = true;
+            break;
         case "KeyX":
             input.bButton = true;
+            break;
         case "KeyC":
             input.cButton = true;
+            break;
     }
 });
 
@@ -39,24 +46,31 @@ document.addEventListener('keyup', function (e) {
     switch (e.code) {
         case "ArrowUp":
             input.up = false;
+            break;
         case "ArrowDown":
             input.down = false;
+            break;
         case "ArrowLeft":
             input.left = false;
+            break;
         case "ArrowRight":
             input.right = false;
+            break;
         case "KeyZ":
             input.aButton = false;
+            break;
         case "KeyX":
             input.bButton = false;
+            break;
         case "KeyC":
             input.cButton = false;
+            break;
     }
 });
 
 let lastTime = 0;
 function run(time: number) {
-    const dt = time - lastTime;
+    const dt = (time - lastTime) / 1000;
     lastTime = time;
     minigameEngine.update(dt, _.clone(input));
     renderer.render(minigameEngine.getRenderable());

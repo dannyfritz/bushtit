@@ -1,11 +1,7 @@
-import { vec2, vec4 } from "gl-matrix";
+import * as PIXI from "pixi.js";
 
 export interface Renderable {
-    getRenderDescriptors(): Array<RenderDescriptor>;
-}
-
-export interface Audible<S> {
-    getAudioDescriptors(): Array<S>;
+    getRenderable(): PIXI.Container;
 }
 
 export interface Input {
@@ -42,27 +38,3 @@ export interface Minigame extends Renderable, Updateable {
     onFinish(): void;
     getStatus(): MinigameStatus;
 }
-
-interface RenderDescriptorBase {
-    type: RenderDescriptorType;
-    position: vec2;
-    color: vec4;
-}
-
-export enum RenderDescriptorType {
-    CIRCLE = "circle",
-    RECTANGLE = "rectangle",
-}
-
-interface Circle extends RenderDescriptorBase {
-    type: RenderDescriptorType.CIRCLE;
-    radius: number;
-}
-
-interface Rectangle extends RenderDescriptorBase {
-    type: RenderDescriptorType.RECTANGLE;
-    width: number;
-    height: number;
-}
-
-export type RenderDescriptor = Rectangle | Circle;

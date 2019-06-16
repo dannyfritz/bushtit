@@ -1,5 +1,5 @@
-import { Minigame, Difficulty, MinigameStatus, Input, RenderDescriptor, RenderDescriptorType } from "../../minigameEngine/interface";
-import { vec2, vec4 } from "gl-matrix";
+import { Minigame, Difficulty, MinigameStatus, Input } from "../../minigameEngine/interface";
+import * as PIXI from "pixi.js";
 
 export default class GetWithinMinigame implements Minigame {
     private time: number;
@@ -14,22 +14,14 @@ export default class GetWithinMinigame implements Minigame {
     getStatus(): MinigameStatus {
         return MinigameStatus.IN_PROGRESS;
     }
-    getRenderDescriptors(): Array<RenderDescriptor> {
-        return [
-            {
-                type: RenderDescriptorType.RECTANGLE,
-                color: vec4.fromValues(1, 0, 0, 1),
-                position: vec2.fromValues(5, 5),
-                width: 20,
-                height: 40,
-            },
-            {
-                type: RenderDescriptorType.CIRCLE,
-                color: vec4.fromValues(0, 1, 0, 0.5),
-                position: vec2.fromValues(50, 5),
-                radius: 20
-            },
-        ];
+    getRenderable(): PIXI.Container {
+        const container = new PIXI.Container();
+        const graphics = new PIXI.Graphics();
+        graphics.beginFill(0x00FF00, 0.5)
+        graphics.drawCircle(50, 60, 20)
+        graphics.endFill()
+        container.addChild(graphics);
+        return container;
     }
     update(dt: number, input: Input): void {
     }

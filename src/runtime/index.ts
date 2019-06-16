@@ -19,8 +19,7 @@ function run (time: number) {
     const dt = time - lastTime;
     lastTime = time;
     minigameEngine.update(dt, input);
-    const renderDescriptors = minigameEngine.getRenderDescriptors();
-    renderer.render(renderDescriptors);
+    renderer.render(minigameEngine.getRenderable());
     requestAnimationFrame(run)
 }
 

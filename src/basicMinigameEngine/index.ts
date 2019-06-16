@@ -1,4 +1,5 @@
-import { MinigameEngine, Minigame, Input, Difficulty, RenderDescriptor } from "../minigameEngine/interface";
+import { MinigameEngine, Minigame, Input, Difficulty } from "../minigameEngine/interface";
+import * as PIXI from "pixi.js";
 import * as _ from "lodash";
 
 export class BasicMinigameEngine implements MinigameEngine {
@@ -25,12 +26,17 @@ export class BasicMinigameEngine implements MinigameEngine {
     }
     onMinigameEnd() {
     }
-    getRenderDescriptors(): RenderDescriptor[] {
-        const renderDescriptors: Array<RenderDescriptor> = [];
+    getRenderable(): PIXI.Container {
+        const container = new PIXI.Container();
         if (this.currentMinigame !== null) {
-            renderDescriptors.push(...this.currentMinigame.getRenderDescriptors());
+            container.addChild(this.currentMinigame.getRenderable());
         }
-        return renderDescriptors;
+        const graphics = new PIXI.Graphics();
+        graphics.beginFill(0xFF0000, 1)
+        graphics.drawRect(20, 50, 20, 30)
+        graphics.endFill()
+        container.addChild(graphics);
+        return container;
     }
     private getNewMinigame(time: number, difficulty: Difficulty): Minigame {
         const minigame = _.sample(this.minigames)!;
